@@ -1,7 +1,7 @@
 # Crypto Bot v1.2
 
 **Hello and welcome!**
-![image](https://user-images.githubusercontent.com/9837951/146076422-c4d03646-cbdc-43a1-a555-6db6072908d9.png)
+![image](https://user-images.githubusercontent.com/9837951/146076651-70082326-0e37-4186-8f9c-084877d34365.png)
 Here is a near peer equal to the bot I am running on AWS
 
 
