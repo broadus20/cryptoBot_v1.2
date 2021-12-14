@@ -461,10 +461,10 @@ def main():
             logger.info(f"Analysing {market}")
             BTC_data, BTC_15min_data, BTC_hour_data, BTC_6hour_data, BTC_daily_data = get_crypto_data(market=market)
             df1 = get_condition()
-            #cryptoBot.df1 = get_condition()
+            cryptoBot.df1 = get_condition()
             df1 = SMA(df1, 50, 200) #Bull market detection
-            #signal = trade_signal(df1, market)
-            #logger.info(f'Signal is: {signal}')
+            signal = trade_signal(df1, market)
+           #logger.info(f'Signal is: {signal}')
             if signal == 'Buy':
                 if buy_sell_marker != 'Buy':
                     logger.info(f"Purchasing {market}...")
