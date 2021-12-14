@@ -3,6 +3,7 @@
 **Hello and welcome!**
 
 Here is a near peer equal to the bot I am running on AWS
+![image](https://user-images.githubusercontent.com/9837951/146076346-a9dc5004-bc0e-49b2-a43e-ef5f5fa18011.png)
 
 ## Join our telegram signal channel!
 https://t.me/+Jel3gW7wbowwZmYx
