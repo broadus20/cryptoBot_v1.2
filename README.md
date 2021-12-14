@@ -2,6 +2,8 @@
 
 **Hello and welcome!**
 
+Here is a near peer equal to the bot I am running on AWS
+
 ## Join our telegram signal channel!
 https://t.me/+Jel3gW7wbowwZmYx
 
