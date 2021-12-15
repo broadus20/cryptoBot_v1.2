@@ -19,10 +19,10 @@ When MACD crosses the signal line from bottom to top a buy is triggered and a st
 This bot also compares the EMA of the hour chart vs the 6 hour chart in order to determine how bullish it is. A very bullish market will trade on 15min candles instead of hour candles.
 
 ## Future plans:
-Incorporporate Renko MACD strategy
-Incorporate SOL-USD, DOGE-USD, ETH-USD
-Add cost dollar averaging
-Add take profits functionality
+* Incorporporate Renko MACD strategy
+* Incorporate SOL-USD, DOGE-USD, ETH-USD
+* Add cost dollar averaging
+* Add take profits functionality
 
 Let me know if you have any more suggestions!
 
