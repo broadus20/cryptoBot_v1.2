@@ -26,5 +26,3 @@ This bot also compares the EMA of the hour chart vs the 6 hour chart in order to
 
 Let me know if you have any more suggestions!
 
-Credit for help for the strategy:
-https://python.plainenglish.io/how-to-know-what-to-trade-ba4c5ef407ba
