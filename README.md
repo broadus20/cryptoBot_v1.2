@@ -24,5 +24,6 @@ This bot also compares the EMA of the hour chart vs the 6 hour chart in order to
 * Add cost dollar averaging
 * Add take profits functionality
 
-Let me know if you have any more suggestions!
+Let me know if you have any more suggestions and join our channel!
+https://t.me/+Jel3gW7wbowwZmYx
 
