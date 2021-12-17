@@ -461,9 +461,9 @@ def main():
             logger.info(f"Analysing {market}")
             BTC_data, BTC_15min_data, BTC_hour_data, BTC_6hour_data, BTC_daily_data = get_crypto_data(market=market)
             df1 = get_condition()
-            cryptoBot.df1 = get_condition()
             df1 = SMA(df1, 50, 200) #Bull market detection
-            signal = trade_signal(df1, market)
+            cryptoBot.df1 = df1
+            signal = trade_signal(cryptoBot.df1, market)
            #logger.info(f'Signal is: {signal}')
             if signal == 'Buy':
                 if buy_sell_marker != 'Buy':
@@ -515,8 +515,11 @@ teleBot.send_message()
 # Continuous execution
 starttime = time.time()
 timeout = time.time() + 60 * 60 * 1  # 60 seconds times 60 meaning the script will run for 1 hr * 6, 6 hours
+main()
 while time.time() <= timeout:
     try:
+        time_d = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+        logging.info("passthrough at " + time_d)
         print("passthrough at ", time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         main()
         time.sleep(900 - ((time.time() - starttime) % 900.0))  # 15 minute interval between each new execution, 900s
