@@ -127,13 +127,13 @@ def trade_signal(df, market):
     if df['MACD'][-1] < df['SIGNAL'][-1] and df['MACD'][-2] > df['SIGNAL'][-2]:
             upward_macd_dir[market] = False
             dnward_macd_dir[market] = True
-    if (upward_ema_dir[market] ==True and df['MACD'] > df['SIGNAL']) or (upward_macd_dir[market] == True and df['ma_fast'] > df['ma_slow']): #Buy Signal
+    if (upward_ema_dir[market] ==True and df['MACD'][-1] > df['SIGNAL'][-1]) or (upward_macd_dir[market] == True and df['ma_fast'][-1] > df['ma_slow'][-1]): #Buy Signal
         if bull_market_detection == False:
             signal = "Buy"
         else:
-            if df['sma_fast'] > df['sma_slow']:#golden cross to determine bull market
+            if df['sma_fast'][-1] > df['sma_slow'][-1]:#golden cross to determine bull market
                 signal = "Buy"
-    if (dnward_ema_dir[market] == True and df['MACD'] < df['SIGNAL']) or (dnward_macd_dir[market] == True and df['ma_fast'] < df['ma_slow']): #Sell Signal
+    if (dnward_ema_dir[market] == True and df['MACD'][-1] < df['SIGNAL'][-1]) or (dnward_macd_dir[market] == True and df['ma_fast'][-1] < df['ma_slow'][-1]): #Sell Signal
         signal = "Sell"
 
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
@@ -471,8 +471,12 @@ def main():
                     #place_order(market, signal, funds=pos_size, sl=3*ATR(df1,120))
                     market_price =  float(list(client.get_product_ticker(product_id= market).values())[1])
                     sl =round( market_price - 3*ATR(df1,120),2)
-                    cryptoBot.market_order(market, signal, sl, funds=pos_size)
-                    teleBot.message = f"Crypto Bot placing {market} market {signal} order of ${pos_size}USD at:\
+                    try:
+                        cryptoBot.market_order(market, signal, sl, funds=pos_size)
+                    except:
+                        logging.critical("error")
+                        pass
+                    teleBot.message = f"Crypto Bot placing {market} market {signal} order  at:\
                         \nPrice: {market_price} \nStoploss: {sl}"
                     teleBot.send_message()
                     teleBot.send_image('MACD_SIGNAL.png')
@@ -487,12 +491,17 @@ def main():
                 if buy_sell_marker != 'sell' and pflio.get_coin_size(market) < .0000001:
                     logger.info(f"Selling {market}")
                     market_price =  float(list(client.get_product_ticker(product_id= market).values())[1])
-                    cryptoBot.market_order(market, signal)
-                    teleBot.message = f"Crypto Bot placing {market} market {signal} order of ${pos_size}USD at:\
+                    try:
+                        cryptoBot.market_order(market, signal)
+                    except:
+                        pass
+                    teleBot.message = f"Crypto Bot placing {market} market {signal} order at:\
                         \nPrice: {market_price}"
                     teleBot.send_message()
                     teleBot.send_image('MACD_SIGNAL.png')
                     teleBot.send_image('ema.png')
+                    logger.info(f"Crypto Bot placing {market} market {signal} order of ${pos_size}USD at:\
+                        \nPrice: {market_price}")
                     #set buy_sell_marker
                     buy_sell_marker = 'Sell'
                 else:
