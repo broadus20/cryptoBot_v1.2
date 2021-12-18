@@ -140,7 +140,7 @@ def trade_signal(df, market):
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
     sns.lineplot(data=df, x='Date', y='SIGNAL', ax=ax1).set(title=f"{market} MACD v. Signal")
     sns.lineplot(data=df, x='Date', y='MACD', ax=ax1)
-    plt.legend(labels=['SIGNAL', 'MACD'], loc='upperleft')
+    plt.legend(labels=['SIGNAL', 'MACD'], loc='upper left')
     plt.savefig('MACD_SIGNAL.png')
 
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
