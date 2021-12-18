@@ -111,6 +111,7 @@ def get_condition():
         logger.info('returning final hour df')
         return BTC_hour_data
 
+
 def trade_signal(df, market):
     "function to generate signal"
     global upward_sma_dir, dnward_sma_dir
@@ -139,12 +140,14 @@ def trade_signal(df, market):
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
     sns.lineplot(data=df, x='Date', y='SIGNAL', ax=ax1).set(title=f"{market} MACD v. Signal")
     sns.lineplot(data=df, x='Date', y='MACD', ax=ax1)
+    plt.legend(labels=['SIGNAL', 'MACD'])
     plt.savefig('MACD_SIGNAL.png')
 
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
     sns.lineplot(data=df.iloc[-200:], x='Date', y='Close', ax=ax1).set(title=f"{market} EMA Crossover")
     sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_fast', ax=ax1)
     sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_slow', ax=ax1)
+    plt.legend('close','ema12', 'ema26')
     plt.savefig('ema.png')
 
     return signal
