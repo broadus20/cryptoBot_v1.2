@@ -140,14 +140,14 @@ def trade_signal(df, market):
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
     sns.lineplot(data=df, x='Date', y='SIGNAL', ax=ax1).set(title=f"{market} MACD v. Signal")
     sns.lineplot(data=df, x='Date', y='MACD', ax=ax1)
-    plt.legend(labels=['SIGNAL', 'MACD'])
+    plt.legend(labels=['SIGNAL', 'MACD'], loc='upperleft')
     plt.savefig('MACD_SIGNAL.png')
 
     fig, ax1 = plt.subplots(ncols=1, figsize=(12, 4))
-    sns.lineplot(data=df.iloc[-200:], x='Date', y='Close', ax=ax1).set(title=f"{market} EMA Crossover")
-    sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_fast', ax=ax1)
-    sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_slow', ax=ax1)
-    plt.legend('close','ema12', 'ema26')
+    sns.lineplot(data=df.iloc[-200:], x='Date', y='Close', ax=ax1, label = 'close').set(title=f"{market} EMA Crossover")
+    sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_fast', ax=ax1, label = 'ema_12')
+    sns.lineplot(data=df.iloc[-200:], x='Date', y='ma_slow', ax=ax1, label = 'ema_26')
+    plt.legend(labels=['close', 'ema_12', 'ema_26'], loc='upper left')
     plt.savefig('ema.png')
 
     return signal
@@ -491,7 +491,7 @@ def main():
                 else:
                     logger.info(f'buy_sell_marker is set to {buy_sell_marker}')
             elif signal == 'Sell':
-                if buy_sell_marker != 'sell' and pflio.get_coin_size(market) < .0000001:
+                if buy_sell_marker != 'sell':
                     logger.info(f"Selling {market}")
                     market_price =  float(list(client.get_product_ticker(product_id= market).values())[1])
                     try:
