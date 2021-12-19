@@ -491,7 +491,7 @@ def main():
                 else:
                     logger.info(f'buy_sell_marker is set to {buy_sell_marker}')
             elif signal == 'Sell':
-                if buy_sell_marker != 'sell':
+                if buy_sell_marker != 'Sell':
                     logger.info(f"Selling {market}")
                     market_price =  float(list(client.get_product_ticker(product_id= market).values())[1])
                     try:
