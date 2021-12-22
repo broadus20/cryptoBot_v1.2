@@ -513,8 +513,8 @@ def main():
     except:
         print("error encountered....skipping this iteration")
 #Initialize
-teleBot.message = f'CryptoBot initializing... \n analyzing... {markets}'
-teleBot.send_message()
+#teleBot.message = f'CryptoBot initializing... \n analyzing... {markets}'
+#teleBot.send_message()
 # Continuous execution
 starttime = time.time()
 timeout = time.time() + 60 * 60 * 1  # 60 seconds times 60 meaning the script will run for 1 hr * 6, 6 hours
